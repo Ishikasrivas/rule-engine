@@ -125,6 +125,12 @@ def eval_condition(condition, data):
 
     data_value = data.get(field)
 
+    # Normalize case for string comparisons
+    if isinstance(data_value, str):
+        data_value = data_value.lower()
+    if isinstance(value, str):
+        value = value.lower()
+
     # Evaluate based on the operator
     if operator == '>':
         return data_value > value
